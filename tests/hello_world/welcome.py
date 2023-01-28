@@ -1,4 +1,4 @@
-from tests.pepsy import Pepsy
+from pepsy import Pepsy
 
 
 class Welcome(Pepsy.Component):
