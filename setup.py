@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 DESCRIPTION = 'A pythonic reactjs-like web framework for Python'
 LONG_DESCRIPTION = 'ReactJS-like web framework that runs on Brython'
 
