@@ -1,4 +1,4 @@
-from pepsy import Pepsy, document, alert, bind
+from tests.hello_world.pepsy import Pepsy, document, alert, bind
 
 
 styles = {
@@ -40,12 +40,10 @@ class App(Pepsy.Component):
         """
         <div style="color:red;"><button click='clap'>Click me!</button><p>Hello world!</p><Bold></Bold></div>
         """
-        return Pepsy.create_element(
-            'div', {'style': styles['container']}, [
+        return Pepsy.create_element('div', {'style': styles['container']}, [
                 Pepsy.create_element('button', {'id': 'george', 'click': lambda event: self.clap(event)}, "Click me!"),
                 Pepsy.create_element(Message, {'hits': self.state['hits']}, [])
             ]
         )
-
 
 Pepsy.mount(Pepsy.create_element(App, {}, []), document.getElementById('app'))

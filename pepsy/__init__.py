@@ -1,1 +1,1 @@
-import pepsy
+import pepsy.pepsy as pepsy
