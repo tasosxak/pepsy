@@ -1,4 +1,4 @@
-from tests.hello_world.pepsy import Pepsy, document, alert, bind
+from pepsy.pepsy import Pepsy, document
 
 
 styles = {
@@ -19,10 +19,10 @@ class Message(Pepsy.Component):
 
     def render(self):
         
-		if self.props['hits'] == 0:
-        	return Pepsy.create_element('b', {}, 'Press the button :)')
-		else:
-			return Pepsy.create_element('b', {}, 'You pressed the button' + " " + self.props['hits'] + " times")
+        if self.props['hits'] == 0:
+            return Pepsy.create_element('b', {}, 'Press the button :)')
+        else:
+            return Pepsy.create_element('b', {}, 'You pressed the button' + " " + self.props['hits'] + " times")
 
 
 class App(Pepsy.Component):
@@ -34,16 +34,12 @@ class App(Pepsy.Component):
     def clap(self, event):
         # alert(str(event.target.id) +  " " + str(self.state['claps']))
         #self.set_state({'message': 'You pressed the button ' + str(self.state['claps'] + 1) + " times!", 'claps': self.state['claps'] + 1}, lambda x: alert(x['message'] + "HAHAHA"))
-		self.set_state({'hits': self.state['hits'] + 1})
+        self.set_state({'hits': self.state['hits'] + 1})
 
     def render(self):
         """
-        <div style="color:red;"><button click='clap'>Click me!</button><p>Hello world!</p><Bold></Bold></div>
+        <div style={styles['container']}><button click='clap'>Click me!</button><Message hits={this.state['hits']}></Message></div>
         """
-        return Pepsy.create_element('div', {'style': styles['container']}, [
-                Pepsy.create_element('button', {'id': 'george', 'click': lambda event: self.clap(event)}, "Click me!"),
-                Pepsy.create_element(Message, {'hits': self.state['hits']}, [])
-            ]
-        )
+        return Pepsy.create_element('div', {'style': styles['container']}, [Pepsy.create_element('button', {'id': 'george', 'click': lambda event: self.clap(event)}, "Click me!"),Pepsy.create_element(Message, {'hits': self.state['hits']}, [])])
 
 Pepsy.mount(Pepsy.create_element(App, {}, []), document.getElementById('app'))

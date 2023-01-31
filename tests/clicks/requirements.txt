@@ -2,6 +2,6 @@ git+https://github.com/tasosxak/pepsy.git
 brython==3.8.7
 
 #pip install -r requirements.txt
-#python -m brython --update
 #python -m brython --modules
+#python -m brython --update
 #python -m http.server 8080
